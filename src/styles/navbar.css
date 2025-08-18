@@ -96,7 +96,15 @@
 .nav-link:hover::after {
   width: 100%;
 }
+.nav-link.active {
+  color: var(--primary); /* Primary color for active link */
+  font-weight: 700; /* Bold active link */
+  border-bottom: 2px solid var(--primary); /* Underline with primary color */
+}
 
+.nav-link.active::after {
+  width: 0; /* Remove the hover effect underline from active */
+}
 /* Icons */
 .nav-icons {
   display: flex;
@@ -254,6 +262,7 @@
 
   .nav-links.active {
     right: 0;
+    color: var(--secondary);
   }
 
   .nav-link {

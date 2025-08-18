@@ -1,16 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FiMenu, FiX, FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
 import { FaCarAlt } from "react-icons/fa";
 import "../styles/navbar.css";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const menuRef = useRef(null); // Reference to the mobile menu
 
   const toggleMenu = () => {
-    console.log("changing");
     setIsOpen(!isOpen);
     document.body.style.overflow = isOpen ? "visible" : "hidden";
   };
+
+  // Function to check if the link is active
+  const isActive = (path) => location.pathname === path;
+
+  // Close the mobile menu if clicked outside
+  const handleOutsideClick = (e) => {
+    if (menuRef.current && !menuRef.current.contains(e.target)) {
+      setIsOpen(false); // Close the menu
+      document.body.style.overflow = "visible"; // Allow scrolling again
+    }
+  };
+
+  // Adding event listener on mount and cleaning up on unmount
+  useEffect(() => {
+    document.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
 
   return (
     <nav className="navbar">
@@ -38,29 +60,29 @@ const Navbar = () => {
         {/* Desktop Links */}
         <ul className={`nav-links ${isOpen ? "active" : ""}`}>
           <li>
-            <a href="/" className="nav-link">
+            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`}>
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/products" className="nav-link">
+            <Link to="/products" className={`nav-link ${isActive("/products") ? "active" : ""}`}>
               Products
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/about" className="nav-link">
+            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`}>
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/contact" className="nav-link">
+            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`}>
               Contact
-            </a>
+            </Link>
           </li>
           <li className="nav-icons">
-            <a href="/account" className="icon-link" aria-label="Account">
+            <Link to="/account" className={`icon-link ${isActive("/account") ? "active" : ""}`} aria-label="Account">
               <FiUser className="nav-icon" />
-            </a>
+            </Link>
           </li>
         </ul>
 
@@ -86,6 +108,11 @@ const Navbar = () => {
         <button className="search-button">
           <FiSearch className="search-icon" />
         </button>
+      </div>
+
+      {/* Mobile Menu - This is wrapped in the ref to detect outside clicks */}
+      <div ref={menuRef} className={`mobile-menu ${isOpen ? "active" : ""}`}>
+        {/* Your mobile menu content goes here */}
       </div>
     </nav>
   );
