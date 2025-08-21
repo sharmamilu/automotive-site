@@ -39,9 +39,10 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo with icon */}
         <div className="logo-container">
-          <FaCarAlt className="logo-icon" />
+          {/* <FaCarAlt className="logo-icon" /> */}
+          <img src="/images/logo.jpeg" alt="Logo" className="logo-icon" />
           <h1 className="logo">
-            AutoParts<span className="logo-highlight">Pro</span>
+            BAVARIA<span className="logo-highlight">CENTER</span>
           </h1>
         </div>
 
