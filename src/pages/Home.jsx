@@ -393,7 +393,7 @@ const Home = () => {
           )}
         </div>
       </section>
-      <section className="founder-section">
+      {/* <section className="founder-section">
         <div className="section-header">
           <h2>Meet the Founder</h2>
           <p>The vision behind AutoPartsPro</p>
@@ -472,7 +472,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
