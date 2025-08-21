@@ -182,50 +182,67 @@ const Products = () => {
     },
     {
       id: 6,
-      name: "LED Headlight Conversion",
-      category: "Lighting",
-      images: ["/images/air-spring.png", "/images/air-spring.png"],
-
+      name: "Mercedes S-Class (W221) 2005–2013 4MATIC AIRMATIC Front Right Air Suspension Strut with ADS",
+      category: "Air Suspension",
       description:
-        "Complete LED headlight conversion kit offering superior illumination and modern styling. Plug-and-play installation with no modification required.",
-      specifications: {
-        Material: "Aircraft-grade Aluminum",
-        Weight: "1.8kg",
-        Compatibility: "Most vehicle models",
-        Warranty: "2 years replacement",
-        "Lumen Output": "6000 lumens per pair",
-      },
+        "This front right air suspension strut is designed for Mercedes-Benz S-Class W221 models with 4MATIC and AIRMATIC Dual Control air suspension systems. Equipped with the semi-active ADS (Adaptive Damping System), this strut automatically adjusts damping levels based on road conditions, driving style, and selected drive mode via the vehicle's 'Drive Select' system. It features a hydraulic DampTronic shock absorber integrated with an air spring to ensure top-tier ride comfort, stability, and handling. Perfect for restoring OEM suspension performance in vehicles requiring precision and dynamic control.",
       features: [
-        "600% brighter than halogen",
-        "Canbus error-free",
-        "IP67 waterproof rating",
-        "50,000 hour lifespan",
+        "Fits Mercedes-Benz S-Class W221 (2005–2013) with 4MATIC AWD",
+        "Position: Front Right",
+        "Supports AIRMATIC Dual Control with ADS",
+        "Semi-active DampTronic shock absorber adapts to driving conditions",
+        "Restores original ride height, comfort, and safety",
+        "OEM-compatible quality for easy installation",
+      ],
+      specifications: {
+        Position: "Front Right",
+        System: "AIRMATIC with ADS (Dual Control)",
+        Drivetrain: "4MATIC (AWD)",
+        "Vehicle Model": "Mercedes S-Class (W221)",
+        "Year Range": "2005–2013",
+        "OEM Part Numbers":
+          "A2213201738, 221320173889, A2213200438, 221320043889, A221320173838, 221320173880, A221320043838, 221320043880, A2213205313, 221320531338, A221320531380, 22132053133880",
+        Material: "Rubber & Metal",
+        Condition: "New or Remanufactured",
+        Warranty: "12 months",
+      },
+      images: [
+        "/images/mercedes/w221-front-right-air-strut-1.jpg",
+        "/images/mercedes/w221-front-right-air-strut-2.jpg",
       ],
     },
     {
       id: 7,
-      name: "Audi A7 Air Springs Air Suspension, Rear Side",
-      category: "Suspension",
-      images: ["/images/audi/airspring-rear.jpg", "/images/air-spring.png"],
+      name: "Mercedes S-Class (W221) 2005–2013 RWD AIRMATIC Front Air Suspension Strut with ADS",
+      category: "Air Suspension",
       description:
-        "This is a rear air spring for the Audi A7. It is designed to restore factory ride height and suspension performance. Compatible with Audi A7 Sportback (4GA, 4GF) models from 2010 to 2018. OEM part numbers: 4G0616001AA, 4G0616001T, 4G0616001, 4G0616001Q, 4G0616001K, 4G0616001R.",
-      specifications: {
-        Material: "High-grade rubber and aluminum",
-        Weight: "4.2 kg",
-        Compatibility:
-          "Audi A7 Sportback (4GA, 4GF) 2010–2018, Rear Suspension",
-        Warranty: "12 months",
-        "Replaces OEM":
-          "4G0616001AA, 4G0616001T, 4G0616001, 4G0616001Q, 4G0616001K, 4G0616001R",
-      },
+        "This front air suspension strut is designed for rear-wheel-drive (RWD) Mercedes-Benz S-Class (W221) models with AIRMATIC Dual Control and ADS (Adaptive Damping System). The semi-active DampTronic shock absorber dynamically adjusts damping based on road surface, driving behavior, and selected driving mode via the 'Drive Select' system. This high-performance component restores vehicle ride height and ensures optimal ride quality and handling performance, just like from the factory.",
       features: [
-        "Direct replacement rear air spring",
-        "Restores original ride comfort and height",
-        "Durable rubber bladder with corrosion-resistant components",
-        "OEM fitment with no modifications required",
+        "Fits Mercedes-Benz S-Class W221 (2005–2013) RWD models",
+        "Position: Front (Left or Right, specify when ordering)",
+        "Compatible with AIRMATIC and ADS systems",
+        "Hydraulic DampTronic adaptive shock absorber",
+        "OEM-grade quality for comfort and control",
+      ],
+      specifications: {
+        Position: "Front",
+        System: "AIRMATIC with ADS (Dual Control)",
+        Drivetrain: "RWD",
+        "Vehicle Model": "Mercedes S-Class (W221)",
+        "Year Range": "2005–2013",
+        "OEM Part Numbers":
+          "A2213201838, A221320183889, A2213200538, A221320053889, A221320183838, A221320183880, A221320053838, A221320053880, A2213205413, A221320541338, A221320541380, A22132054133880, 2213201838, 221320183889, 2213200538, 221320053889, 221320183838, 221320183880, 221320053838, 221320053880, 2213205413, 221320541338, 221320541380, 22132054133880",
+        Material: "Rubber & Metal",
+        Condition: "New or Remanufactured",
+        Warranty: "12 months",
+      },
+      images: [
+        "/images/mercedes/w221-rwd-front-air-strut-1.webp",
+        "/images/mercedes/w221-rwd-front-air-strut-2.webp",
+        "/images/mercedes/w221-rwd-front-air-strut-3.webp",
+        "/images/mercedes/w221-rwd-front-air-strut-4.webp",
       ],
     },
-
     {
       id: 8,
       name: "Audi A7 Air Spring Suspension Service Kit (FRONT)",
@@ -274,6 +291,98 @@ const Products = () => {
         "CDC (Continuous Damping Control) function for dynamic comfort adjustment",
         "Hydraulic shock absorber with integrated internal valve",
         "Compatible with factory air suspension and electronic systems",
+      ],
+    },
+    {
+      id: 10,
+      name: "Mercedes S-Class (W221) 2005–2013 AIRMATIC Front Air Suspension Strut with ADS",
+      category: "Air Suspension",
+      description:
+        "This front air strut (part number A2213209313) is designed for Mercedes-Benz S-Class W221 models equipped with AIRMATIC and ADS (Adaptive Damping System). It features a hydraulic DampTronic shock absorber, which adjusts damping based on road surface, driving style, and selected driving mode through the Drive Select system. This OEM-grade replacement part restores original ride comfort and suspension performance in a wide range of W221 models, including AMG variants.",
+      features: [
+        "Fits Mercedes-Benz S-Class W221 (2005–2013) models with AIRMATIC and ADS",
+        "Position: Front (Left or Right)",
+        "Semi-active DampTronic system adapts to road and driving dynamics",
+        "Restores factory ride comfort and height",
+        "OEM-equivalent part with precise fit and performance",
+      ],
+      specifications: {
+        Position: "Front",
+        System: "AIRMATIC with ADS",
+        Drivetrain: "RWD / 4MATIC",
+        "Vehicle Model": "Mercedes S-Class (W221)",
+        "Year Range": "2005–2013",
+        "OEM Part Numbers":
+          "A2213209313, 2213209313, A221320931389, 221320931389, A2213204913, 2213204913",
+        Material: "Rubber & Metal",
+        Condition: "New or Remanufactured",
+        Warranty: "12 months",
+      },
+      images: [
+        "/images/mercedes/w221-front-air-strut-kit-1.jpg",
+        "/images/mercedes/w221-front-air-strut-kit-2.jpg",
+        "/images/mercedes/w221-front-air-strut-kit-3.jpg",
+      ],
+    },
+    {
+      id: 11,
+      name: "Mercedes S-Class (W221) 2005–2013 AIRMATIC Rear Left Air Suspension Strut",
+      category: "Air Suspension",
+      description:
+        "This is a rear left air suspension strut for Mercedes-Benz S-Class W221 models with AIRMATIC. Designed to replace worn or leaking air struts while maintaining the vehicle's original ride quality. This component integrates an air spring and shock absorber to maintain height and comfort. Ideal for full replacement or restoration when the shock absorber is still functioning well and there are no oil leaks. This is a complete kit for strut-level repair or replacement.",
+      features: [
+        "Fits Mercedes-Benz S-Class W221 (2005–2013)",
+        "Position: Rear Left",
+        "OEM-grade air spring integrated with strut housing",
+        "Ideal for replacing leaking or cracked air bladders",
+        "Not suitable for oil-leaking shock absorbers",
+        "Restores vehicle ride height and performance",
+      ],
+      specifications: {
+        Position: "Rear Left",
+        System: "AIRMATIC with ADS",
+        Drivetrain: "RWD / 4MATIC",
+        "Vehicle Model": "Mercedes S-Class (W221)",
+        "Year Range": "2005–2013",
+        "OEM Part Numbers":
+          "A2213209313, 2213209313, A221320931389, 221320931389, A2213204913, 2213204913",
+        Material: "Rubber & Metal",
+        Condition: "New",
+        Warranty: "12 months",
+      },
+      images: [
+        "/images/mercedes/w221-rear-left-air-strut-1.webp",
+        "/images/mercedes/w221-rear-left-air-strut-2.webp",
+        "/images/mercedes/w221-rear-left-air-strut-3.webp",
+      ],
+    },
+    {
+      id: 12,
+      name: "Mercedes S-Class (W221) 2005–2013 AIRMATIC Rear Right Air Suspension Strut with ADS",
+      category: "Air Suspension",
+      description:
+        "This is a new rear right shock absorber for the Mercedes-Benz S-Class W221 equipped with AIRMATIC and Adaptive Damping System (ADS). It features an active inner valve that adapts to road surface, driving style, and selected driving mode via the Drive Select system. This OEM-grade strut restores the original comfort and dynamic response, making it a perfect replacement for failing or worn rear suspension components.",
+      features: [
+        "Position: Rear Right",
+        "Active ADS (Adaptive Damping System) compatible",
+        "Maintains original ride height and damping characteristics",
+        "Ideal for vehicles with intact shock absorber performance",
+        "Not suitable for oil-leaking struts",
+        "OEM-fitment with premium ride comfort",
+      ],
+      specifications: {
+        Position: "Rear Right",
+        System: "AIRMATIC with ADS",
+        "Vehicle Model": "Mercedes S-Class (W221)",
+        "Year Range": "2005–2013",
+        "OEM Part Numbers":
+          "A2213205513, 2213205513, A2213205713, 2213205713, A2213201338, 2213201338, A221320551380, 221320551380, A221320571380, 221320571380, A221320551389, 221320551389, A221320571389, 221320571389",
+        Condition: "New",
+        Warranty: "12 months",
+      },
+      images: [
+        "/images/mercedes/w221-rear-right-air-strut-1.jpg",
+        "/images/mercedes/w221-rear-right-air-strut-2.jpg",
       ],
     },
   ];
