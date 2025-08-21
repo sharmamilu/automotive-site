@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FiSearch, FiFilter, FiEye, FiX } from "react-icons/fi";
 import "../styles/product.css";
 const Products = () => {
@@ -6,35 +6,60 @@ const Products = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === selectedProduct.images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? selectedProduct.images.length - 1 : prevIndex - 1
+    );
+  };
+
+  useEffect(() => {
+    if (isModalOpen) {
+      setCurrentImageIndex(0);
+    }
+  }, [isModalOpen]);
 
   // Sample product data
   const products = [
     {
       id: 1,
-      name: "Turbo Engine Kit",
-      category: "Engine",
-      image: "/images/air-spring.png",
+      name: "Mercedes Viano (W639) 2003–2014 Rear Air Spring",
+      category: "Air Suspension",
       description:
-        "High-performance turbo engine kit designed for enhanced power and efficiency. Features precision engineering with aerospace-grade materials for maximum durability and performance.",
-      specifications: {
-        Material: "Aerospace Aluminum Alloy",
-        Weight: "25kg",
-        Compatibility: "Most 4-cylinder engines",
-        Warranty: "2 years manufacturer warranty",
-        "Power Gain": "Up to 40% increase",
-      },
+        "High-quality rear air spring suitable for Mercedes-Benz Viano (W639) models from 2003 to 2014. Designed to restore original ride comfort and vehicle height.",
       features: [
-        "Precision balanced components",
-        "High-temperature resistance",
+        "OEM-compatible fit",
+        "Durable rubber and plastic construction",
+        "Restores suspension performance",
         "Easy installation",
-        "OEM quality standards",
+      ],
+      specifications: {
+        Position: "Rear",
+        "Vehicle Model": "Mercedes Viano (W639)",
+        "Year Range": "2003–2014",
+        Material: "Rubber & Plastic",
+        Warranty: "12 months",
+        "Replaces OEM": "A6393280101, 6393280101, A6393280201, 6393280201",
+      },
+      images: [
+        "/images/mercedes/air-suspension-rear.jpg",
+        "/images/mercedes/air-suspension.webp",
       ],
     },
+
     {
       id: 2,
       name: "Performance Brake System",
       category: "Brakes",
-      image: "/images/air-spring.png",
+      images: ["/images/air-spring.png", "/images/air-spring.png"],
+
       description:
         "Premium brake system offering superior stopping power and exceptional durability. Designed for both daily driving and performance applications.",
       specifications: {
@@ -55,7 +80,8 @@ const Products = () => {
       id: 3,
       name: "Sport Suspension Kit",
       category: "Suspension",
-      image: "/images/air-spring.png",
+      images: ["/images/air-spring.png", "/images/air-spring.png"],
+
       description:
         "Advanced suspension system that provides improved handling characteristics while maintaining ride comfort. Perfect for enthusiasts seeking better road manners.",
       specifications: {
@@ -76,7 +102,7 @@ const Products = () => {
       id: 4,
       name: "High-Flow Air Intake",
       category: "Intake",
-      image: "/images/air-spring.png",
+      images: ["/images/air-spring.png", "/images/air-spring.png"],
       description:
         "Cold air intake system that increases airflow for better engine performance and improved fuel efficiency. Features advanced filtration technology.",
       specifications: {
@@ -97,7 +123,8 @@ const Products = () => {
       id: 5,
       name: "Racing Exhaust System",
       category: "Exhaust",
-      image: "/images/air-spring.png",
+      images: ["/images/air-spring.png", "/images/air-spring.png"],
+
       description:
         "Complete performance exhaust system that enhances engine sound while providing measurable horsepower gains. T304 stainless steel construction.",
       specifications: {
@@ -118,7 +145,8 @@ const Products = () => {
       id: 6,
       name: "LED Headlight Conversion",
       category: "Lighting",
-      image: "/images/air-spring.png",
+      images: ["/images/air-spring.png", "/images/air-spring.png"],
+
       description:
         "Complete LED headlight conversion kit offering superior illumination and modern styling. Plug-and-play installation with no modification required.",
       specifications: {
@@ -139,7 +167,7 @@ const Products = () => {
       id: 7,
       name: "Audi A7 Air Springs Air Suspension, Rear Side",
       category: "Suspension",
-      image: "/images/audi/airspring-rear.jpg",
+      images: ["/images/audi/airspring-rear.jpg", "/images/air-spring.png"],
       description:
         "This is a rear air spring for the Audi A7. It is designed to restore factory ride height and suspension performance. Compatible with Audi A7 Sportback (4GA, 4GF) models from 2010 to 2018. OEM part numbers: 4G0616001AA, 4G0616001T, 4G0616001, 4G0616001Q, 4G0616001K, 4G0616001R.",
       specifications: {
@@ -163,7 +191,10 @@ const Products = () => {
       id: 8,
       name: "Audi A7 Air Spring Suspension Service Kit (FRONT)",
       category: "Suspension",
-      image: "/images/audi/A7AirSpringSuspensionServiceKit(FRONT).jpg",
+      images: [
+        "/images/audi/A7AirSpringSuspensionServiceKit(FRONT).jpg",
+        "/images/audi/A7AirSpringSuspensionServiceKit(FRONT).jpg",
+      ],
       description:
         "This is a new air spring for the Audi A7 front suspension. It is a complete service kit for the front air suspension strut. This kit should not be used for shock absorbers that are leaking oil. Compatible with Audi A7 4G Sportback (2010–2018). OEM part numbers: 4G0616039AD, 4G0616039T, 4G0616039AB, 4G0616039AK, 4G0616039AL.",
       specifications: {
@@ -186,7 +217,8 @@ const Products = () => {
       id: 9,
       name: "Audi A7 4G shock-absorber Air suspension strut front",
       category: "Suspension",
-      image: "/images/audi/shock-absorber.jpg",
+      images: ["/images/audi/shock-absorber.jpg", "/images/air-spring.png"],
+
       description:
         "The Audi A7 (4G) 2010-2018 Air Suspension System has 2 Front Air Struts and 2 Rear Air Spring Bags with 2 Rear Shock Absorbers. Height Sensors tell the Control Module when the Air Suspension Compressor needs to inflate or deflate the Air Suspension System. The Solenoid Valve Block will distribute the Air accordingly throughout the Air Suspension System. Here at BAVARIA CENTER you will find many of the necessary parts and components to fix your Audi A7 (4G) 2010-2018 for less.",
       specifications: {
@@ -293,7 +325,7 @@ const Products = () => {
             {filteredProducts.map((product) => (
               <div key={product.id} className="product-card">
                 <div className="product-image">
-                  <img src={product.image} alt={product.name} />
+                  <img src={product.images[0]} alt={product.name} />
                   <div className="product-overlay">
                     <button
                       className="view-details-btn"
@@ -334,7 +366,27 @@ const Products = () => {
             <div className="modal-body">
               <div className="modal-left">
                 <div className="modal-image">
-                  <img src={selectedProduct.image} alt={selectedProduct.name} />
+                  <div className="modal-image-carousel">
+                    <button
+                      className="carousel-button prev"
+                      onClick={prevImage}
+                    >
+                      &#10094;
+                    </button>
+                    <img
+                      src={selectedProduct.images[currentImageIndex]}
+                      alt={selectedProduct.name}
+                      className="carousel-image"
+                    />
+                    <button
+                      className="carousel-button next"
+                      onClick={nextImage}
+                    >
+                      &#10095;
+                    </button>
+                  </div>
+
+                  {/* <img src={selectedProduct.images[0]} alt={selectedProduct.name} /> */}
                 </div>
 
                 <div className="product-specifications">

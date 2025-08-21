@@ -103,11 +103,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 30px;
-  justify-content: center; 
+  justify-content: center;
 }
 .product-card {
-  max-width: 350px;          /* ⬅ prevent cards from stretching too wide */
-  margin: 0 auto;            /* ⬅ keeps them centered */
+  max-width: 350px; /* ⬅ prevent cards from stretching too wide */
+  margin: 0 auto; /* ⬅ keeps them centered */
 }
 .product-card {
   background: white;
@@ -116,7 +116,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-    /* background: linear-gradient(rgba(150, 162, 190, 0.8), rgba(137, 159, 211, 0.9)); */
+  /* background: linear-gradient(rgba(150, 162, 190, 0.8), rgba(137, 159, 211, 0.9)); */
 }
 
 .product-card:hover {
@@ -235,6 +235,39 @@
   /* padding: 20px; */
 }
 
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.7);
+  border: none;
+  color: #111827;
+  font-size: 2rem;
+  padding: 8px 12px;
+  cursor: pointer;
+  z-index: 1;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-button.prev {
+  left: 10px;
+}
+
+.carousel-button.next {
+  right: 50%;
+}
 .modal-content {
   background: white;
   border-radius: 12px;
@@ -594,9 +627,19 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .support-image {
     order: -1;
+  }
+
+  .carousel-button.prev {
+    top: 20%;
+    left: 1px;
+  }
+
+  .carousel-button.next {
+    top: 20%;
+    right: 1px;
   }
 }
 
@@ -605,11 +648,11 @@
   .support-text h2 {
     font-size: 2rem;
   }
-  
+
   .categories-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .category-card {
     padding: 30px 20px;
   }
@@ -620,12 +663,12 @@
   .technical-support {
     padding: 60px 0;
   }
-  
+
   .support-feature {
     flex-direction: column;
     text-align: center;
   }
-  
+
   .feature-icon {
     margin: 0 auto;
   }
