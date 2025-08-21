@@ -3,7 +3,7 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Navbar from "./components/NavBar";
 import Footer from "./components/Footer";
-// import Products from "./pages/Products"; // Create this page
+import Products from "./pages/Product"; // Create this page
 import Contact from "./pages/Contact";   // Create this page
 // import Account from "./pages/Account";   // Create this page
 import "./App.css";
@@ -17,7 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            {/* <Route path="/products" element={<Products />} /> */}
+            <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
             {/* <Route path="/account" element={<Account />} /> */}
           </Routes>
