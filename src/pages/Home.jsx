@@ -126,6 +126,9 @@ const Home = () => {
   const [showFullBio, setShowFullBio] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const handleViewAllProducts = () => {
+    window.location.href = "/products";
+  };
   useEffect(() => {
     const interval = setInterval(() => {
       if (!isTransitioning) {
@@ -256,7 +259,7 @@ const Home = () => {
           ))}
         </div>
 
-        <button className="view-all-btn">
+        <button className="view-all-btn" onClick={handleViewAllProducts}>
           View All Products
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
             <path
