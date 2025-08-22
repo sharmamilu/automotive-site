@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="footer-container">
         {/* Column 1 - Logo / About */}
         <div className="footer-section">
-          <h2 className="footer-logo">AutoParts</h2>
+          <h2 className="footer-logo">Bavaria Center</h2>
           <p className="footer-text">
             Delivering reliable automotive parts with quality assurance and
             trusted service across the nation.
@@ -37,16 +37,16 @@ const Footer = () => {
           <h3 className="footer-heading">Products</h3>
           <ul className="footer-links">
             <li>
-              <a href="/products/tires">Suspensions</a>
+              <a href="/products">Suspensions</a>
             </li>
             <li>
-              <a href="/products/batteries">Hydrulic</a>
+              <a href="/products">Hydrulic</a>
             </li>
             <li>
-              <a href="/products/oils"></a>Spring
+              <a href="/products"></a>Spring
             </li>
             <li>
-              <a href="/products/filters"> Filters </a>
+              <a href="/products"> Filters </a>
             </li>
           </ul>
         </div>

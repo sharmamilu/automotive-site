@@ -189,6 +189,7 @@
   position: absolute;
   right: 0;
   top: 0;
+  left: 40%;
   height: 100%;
   padding: 0 1rem;
   background: transparent;
@@ -230,8 +231,15 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
+  .search-input{
+    width: 85%;
+  }
   .search-container {
     margin: 0 1rem;
+  }
+  .search-button{
+    top: 28%;
+    left: 20%;
   }
 }
 

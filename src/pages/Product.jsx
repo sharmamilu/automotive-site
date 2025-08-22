@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FiSearch, FiFilter, FiEye, FiX } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
+
 import "../styles/product.css";
 const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -13,6 +15,17 @@ const Products = () => {
       prevIndex === selectedProduct.images.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const search = params.get("search");
+
+    if (search) {
+      setSearchQuery(search);
+    }
+  }, [location.search]);
 
   const prevImage = () => {
     setCurrentImageIndex((prevIndex) =>

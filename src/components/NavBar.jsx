@@ -3,11 +3,14 @@ import { FiMenu, FiX, FiShoppingCart, FiUser, FiSearch } from "react-icons/fi";
 import { FaCarAlt } from "react-icons/fa";
 import "../styles/navbar.css";
 import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const menuRef = useRef(null); // Reference to the mobile menu
+  const [inputValue, setInputValue] = useState("");
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -47,41 +50,69 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar - Desktop */}
-        <div className="search-container">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            if (inputValue.trim()) {
+              navigate(
+                `/products?search=${encodeURIComponent(inputValue.trim())}`
+              );
+            }
+          }}
+          className="search-container"
+        >
           <input
             type="text"
             placeholder="Search parts..."
             className="search-input"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
-          <button className="search-button">
+          <button type="submit" className="search-button">
             <FiSearch className="search-icon" />
           </button>
-        </div>
+        </form>
 
         {/* Desktop Links */}
         <ul className={`nav-links ${isOpen ? "active" : ""}`}>
           <li>
-            <Link to="/" className={`nav-link ${isActive("/") ? "active" : ""}`}>
+            <Link
+              to="/"
+              className={`nav-link ${isActive("/") ? "active" : ""}`}
+            >
               Home
             </Link>
           </li>
           <li>
-            <Link to="/products" className={`nav-link ${isActive("/products") ? "active" : ""}`}>
+            <Link
+              to="/products"
+              className={`nav-link ${isActive("/products") ? "active" : ""}`}
+            >
               Products
             </Link>
           </li>
           <li>
-            <Link to="/about" className={`nav-link ${isActive("/about") ? "active" : ""}`}>
+            <Link
+              to="/about"
+              className={`nav-link ${isActive("/about") ? "active" : ""}`}
+            >
               About
             </Link>
           </li>
           <li>
-            <Link to="/contact" className={`nav-link ${isActive("/contact") ? "active" : ""}`}>
+            <Link
+              to="/contact"
+              className={`nav-link ${isActive("/contact") ? "active" : ""}`}
+            >
               Contact
             </Link>
           </li>
           <li className="nav-icons">
-            <Link to="/account" className={`icon-link ${isActive("/account") ? "active" : ""}`} aria-label="Account">
+            <Link
+              to="/account"
+              className={`icon-link ${isActive("/account") ? "active" : ""}`}
+              aria-label="Account"
+            >
               <FiUser className="nav-icon" />
             </Link>
           </li>
