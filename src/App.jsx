@@ -4,8 +4,9 @@ import About from "./pages/About";
 import Navbar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Products from "./pages/Product"; // Create this page
-import Contact from "./pages/Contact";   // Create this page
+import Contact from "./pages/Contact"; // Create this page
 // import Account from "./pages/Account";   // Create this page
+import Upload from "./pages/Upload";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/products" element={<Products />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/upload" element={<Upload />} />
             {/* <Route path="/account" element={<Account />} /> */}
           </Routes>
         </main>

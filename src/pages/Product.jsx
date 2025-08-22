@@ -1,6 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { FiSearch, FiFilter, FiEye, FiX, FiGrid, FiTruck, FiMapPin, FiCalendar, FiRefreshCw  } from "react-icons/fi";
+import {
+  FiSearch,
+  FiFilter,
+  FiEye,
+  FiX,
+  FiGrid,
+  FiTruck,
+  FiMapPin,
+  FiCalendar,
+  FiRefreshCw,
+} from "react-icons/fi";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 import "../styles/product.css";
 const Products = () => {
@@ -13,6 +24,25 @@ const Products = () => {
   const [vehicleFilter, setVehicleFilter] = useState("all");
   const [positionFilter, setPositionFilter] = useState("all");
   const [yearFilter, setYearFilter] = useState("all");
+
+  const [productsList, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get("https://bavaria-center.onrender.com/api/products");
+        setProducts(res.data);
+      } catch (err) {
+        setError("Failed to fetch products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   // Check if any filters are active
   const hasActiveFilters =
@@ -61,7 +91,7 @@ const Products = () => {
   }, [isModalOpen]);
 
   // Sample product data
-  const products = [
+  let products = [
     {
       id: 1,
       name: "Mercedes Viano (W639) 2003–2014 Rear Air Spring",
@@ -421,6 +451,8 @@ const Products = () => {
     },
   ];
 
+  products = [...products, ...productsList]
+  // const products = productsList;
   const categories = [
     "all",
     "Engine",
@@ -432,6 +464,7 @@ const Products = () => {
     "Electronics",
     "Exterior",
   ];
+
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -445,20 +478,32 @@ const Products = () => {
     document.body.style.overflow = "visible";
   };
 
-const filteredProducts = products.filter((product) => {
-  const matchesCategory = filter === "all" || product.category === filter;
-  const matchesSearch =
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    product.description.toLowerCase().includes(searchQuery.toLowerCase());
-  const matchesVehicle = vehicleFilter === "all" || 
-    (product.specifications && product.specifications['Vehicle Model'] === vehicleFilter);
-  const matchesPosition = positionFilter === "all" || 
-    (product.specifications && product.specifications.Position === positionFilter);
-  const matchesYear = yearFilter === "all" || 
-    (product.specifications && product.specifications['Year Range'] === yearFilter);
+  const filteredProducts = products.filter((product) => {
+    const matchesCategory = filter === "all" || product.category === filter;
+    const matchesSearch =
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesVehicle =
+      vehicleFilter === "all" ||
+      (product.specifications &&
+        product.specifications["Vehicle Model"] === vehicleFilter);
+    const matchesPosition =
+      positionFilter === "all" ||
+      (product.specifications &&
+        product.specifications.Position === positionFilter);
+    const matchesYear =
+      yearFilter === "all" ||
+      (product.specifications &&
+        product.specifications["Year Range"] === yearFilter);
 
-  return matchesCategory && matchesSearch && matchesVehicle && matchesPosition && matchesYear;
-});
+    return (
+      matchesCategory &&
+      matchesSearch &&
+      matchesVehicle &&
+      matchesPosition &&
+      matchesYear
+    );
+  });
 
   return (
     <div className="products-page">
@@ -717,14 +762,23 @@ const filteredProducts = products.filter((product) => {
                 <div className="product-specifications">
                   <h4>Technical Specifications</h4>
                   <div className="specs-grid">
-                    {Object.entries(selectedProduct.specifications).map(
-                      ([key, value]) => (
-                        <div key={key} className="spec-item">
-                          <span className="spec-label">{key}:</span>
-                          <span className="spec-value">{value}</span>
-                        </div>
-                      )
-                    )}
+                    {Array.isArray(selectedProduct.specifications)
+                      ? // Case: array of {key, value}
+                        selectedProduct.specifications.map((spec, index) => (
+                          <div key={index} className="spec-item">
+                            <span className="spec-label">{spec.key}:</span>
+                            <span className="spec-value">{spec.value}</span>
+                          </div>
+                        ))
+                      : // Case: plain object
+                        Object.entries(
+                          selectedProduct.specifications || {}
+                        ).map(([key, value]) => (
+                          <div key={key} className="spec-item">
+                            <span className="spec-label">{key}:</span>
+                            <span className="spec-value">{value}</span>
+                          </div>
+                        ))}
                   </div>
                 </div>
               </div>
@@ -749,11 +803,11 @@ const filteredProducts = products.filter((product) => {
                   </ul>
                 </div>
 
-                <div className="modal-actions">
+                {/* <div className="modal-actions">
                   <button className="inquiry-btn">
                     Request More Information
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>

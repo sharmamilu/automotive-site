@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../styles/home.css";
-
+import axios from "axios";
 const slides = [
   {
     image: "/images/defender.png",
@@ -28,39 +28,6 @@ const slides = [
     description:
       "We're the go-to choice for garages and service centers nationwide.",
     gradient: "linear-gradient(135deg, #5e64bdff, #735fe9ff)",
-  },
-];
-
-const featuredProducts = [
-  {
-    id: 1,
-    name: "Mercedes C C205 AMG Air springs airsuspension AIRMATIC, rear",
-    category: "Engine Components",
-    image: "/images/air-spring.png",
-    badge: "Best Seller",
-    description: "Powerful turbo engine for enhanced performance.",
-  },
-  {
-    id: 2,
-    name: "Performance Brakes",
-    category: "Braking System",
-    image: "/images/air-spring.png",
-    description: "High-performance brakes for enhanced stopping power.",
-  },
-  {
-    id: 3,
-    name: "Sport Suspension Kit",
-    category: "Suspension",
-    image: "/images/air-spring.png",
-    badge: "New",
-    description: "Enhanced suspension for sporty driving.",
-  },
-  {
-    id: 4,
-    name: "High-Flow Air Filter",
-    category: "Intake System",
-    image: "/images/air-spring.png",
-    description: "Enhanced air flow for improved performance.",
   },
 ];
 
@@ -129,7 +96,33 @@ const Home = () => {
   const [expandedPartners, setExpandedPartners] = useState([]);
   const [showFullBio, setShowFullBio] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [productsList, setProducts] = useState([]);
+  const [featuredProducts, setFeaturedProducts] = useState([]);
 
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get("https://bavaria-center.onrender.com/api/products");
+        setProducts(res.data);
+        const featured = res.data
+          .slice(0, 4) // Get the first 4 products
+          .map((product) => ({
+            name: product.name,
+            category: product.category,
+            image: product.images?.[0], // Get the first image safely
+            description: product.description,
+          }));
+
+        setFeaturedProducts(featured);
+      } catch (err) {
+        setError("Failed to fetch products");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
   const handleViewAllProducts = () => {
     window.location.href = "/products";
   };
