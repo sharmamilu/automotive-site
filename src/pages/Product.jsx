@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FiSearch, FiFilter, FiEye, FiX } from "react-icons/fi";
+import { FiSearch, FiFilter, FiEye, FiX, FiGrid, FiTruck, FiMapPin, FiCalendar, FiRefreshCw  } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 
 import "../styles/product.css";
@@ -9,6 +9,27 @@ const Products = () => {
   const [filter, setFilter] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const [vehicleFilter, setVehicleFilter] = useState("all");
+  const [positionFilter, setPositionFilter] = useState("all");
+  const [yearFilter, setYearFilter] = useState("all");
+
+  // Check if any filters are active
+  const hasActiveFilters =
+    filter !== "all" ||
+    vehicleFilter !== "all" ||
+    positionFilter !== "all" ||
+    yearFilter !== "all" ||
+    searchQuery;
+
+  // Clear all filters function
+  const clearAllFilters = () => {
+    setFilter("all");
+    setVehicleFilter("all");
+    setPositionFilter("all");
+    setYearFilter("all");
+    setSearchQuery("");
+  };
 
   const nextImage = () => {
     setCurrentImageIndex((prevIndex) =>
@@ -424,14 +445,20 @@ const Products = () => {
     document.body.style.overflow = "visible";
   };
 
-  const filteredProducts = products.filter((product) => {
-    const matchesCategory = filter === "all" || product.category === filter;
-    const matchesSearch =
-      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      product.description.toLowerCase().includes(searchQuery.toLowerCase());
+const filteredProducts = products.filter((product) => {
+  const matchesCategory = filter === "all" || product.category === filter;
+  const matchesSearch =
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchQuery.toLowerCase());
+  const matchesVehicle = vehicleFilter === "all" || 
+    (product.specifications && product.specifications['Vehicle Model'] === vehicleFilter);
+  const matchesPosition = positionFilter === "all" || 
+    (product.specifications && product.specifications.Position === positionFilter);
+  const matchesYear = yearFilter === "all" || 
+    (product.specifications && product.specifications['Year Range'] === yearFilter);
 
-    return matchesCategory && matchesSearch;
-  });
+  return matchesCategory && matchesSearch && matchesVehicle && matchesPosition && matchesYear;
+});
 
   return (
     <div className="products-page">
@@ -447,34 +474,171 @@ const Products = () => {
       </section>
 
       {/* Filters and Search */}
+      {/* Filters and Search */}
       <section className="products-filters">
         <div className="container">
+          <div className="filters-header">
+            <h2>Find Your Perfect Parts</h2>
+            <p>Filter by your specific requirements</p>
+          </div>
+
           <div className="filters-container">
+            {/* Search Box */}
             <div className="search-box">
+              <FiSearch className="search-icon" />
               <input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Search by product name or desc..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-              <FiSearch className="search-icon" />
+              {searchQuery && (
+                <button
+                  className="clear-search"
+                  onClick={() => setSearchQuery("")}
+                >
+                  <FiX />
+                </button>
+              )}
             </div>
 
+            {/* Filter Controls */}
             <div className="filter-controls">
+              {/* Category Filter */}
               <div className="filter-group">
-                <label>Filter by Category:</label>
+                <label className="filter-label">
+                  <FiGrid /> Category
+                </label>
                 <select
                   value={filter}
                   onChange={(e) => setFilter(e.target.value)}
+                  className="filter-select"
                 >
+                  <option value="all">All Categories</option>
                   {categories.map((category) => (
                     <option key={category} value={category}>
-                      {category.charAt(0).toUpperCase() + category.slice(1)}
+                      {category}
                     </option>
                   ))}
                 </select>
               </div>
+
+              {/* Vehicle Model Filter */}
+              <div className="filter-group">
+                <label className="filter-label">
+                  <FiTruck /> Vehicle Model
+                </label>
+                <select
+                  value={vehicleFilter}
+                  onChange={(e) => setVehicleFilter(e.target.value)}
+                  className="filter-select"
+                >
+                  <option value="all">All Models</option>
+                  {Array.from(
+                    new Set(
+                      products
+                        .map((p) => p.specifications?.["Vehicle Model"] || "")
+                        .filter(Boolean)
+                    )
+                  ).map((model) => (
+                    <option key={model} value={model}>
+                      {model}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Position Filter */}
+              <div className="filter-group">
+                <label className="filter-label">
+                  <FiMapPin /> Position
+                </label>
+                <select
+                  value={positionFilter}
+                  onChange={(e) => setPositionFilter(e.target.value)}
+                  className="filter-select"
+                >
+                  <option value="all">All Positions</option>
+                  {Array.from(
+                    new Set(
+                      products
+                        .map((p) => p.specifications?.Position || "")
+                        .filter(Boolean)
+                    )
+                  ).map((position) => (
+                    <option key={position} value={position}>
+                      {position}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Year Range Filter */}
+              <div className="filter-group">
+                <label className="filter-label">
+                  <FiCalendar /> Year Range
+                </label>
+                <select
+                  value={yearFilter}
+                  onChange={(e) => setYearFilter(e.target.value)}
+                  className="filter-select"
+                >
+                  <option value="all">All Years</option>
+                  {Array.from(
+                    new Set(
+                      products
+                        .map((p) => p.specifications?.["Year Range"] || "")
+                        .filter(Boolean)
+                    )
+                  ).map((year) => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Clear Filters Button */}
+              <button className="clear-filters" onClick={clearAllFilters}>
+                <FiRefreshCw /> Clear All
+              </button>
             </div>
+
+            {/* Active Filters Display */}
+            {hasActiveFilters && (
+              <div className="active-filters">
+                <span>Active filters:</span>
+                {filter !== "all" && (
+                  <span className="filter-tag">
+                    Category: {filter} <FiX onClick={() => setFilter("all")} />
+                  </span>
+                )}
+                {vehicleFilter !== "all" && (
+                  <span className="filter-tag">
+                    Model: {vehicleFilter}{" "}
+                    <FiX onClick={() => setVehicleFilter("all")} />
+                  </span>
+                )}
+                {positionFilter !== "all" && (
+                  <span className="filter-tag">
+                    Position: {positionFilter}{" "}
+                    <FiX onClick={() => setPositionFilter("all")} />
+                  </span>
+                )}
+                {yearFilter !== "all" && (
+                  <span className="filter-tag">
+                    Year: {yearFilter}{" "}
+                    <FiX onClick={() => setYearFilter("all")} />
+                  </span>
+                )}
+                {searchQuery && (
+                  <span className="filter-tag">
+                    Search: "{searchQuery}"{" "}
+                    <FiX onClick={() => setSearchQuery("")} />
+                  </span>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </section>
