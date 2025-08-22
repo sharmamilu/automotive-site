@@ -15,6 +15,16 @@ import {
 import "../styles/upload.css";
 
 const Upload = () => {
+
+
+    // usestate to check if user is valid check if isLoggedIn is true in localstorage
+    const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("isLoggedIn"));
+    //if is logged in is true then only user will be able to access it else he won't
+    if (!isLoggedIn) {
+    //   redirect to / page 
+      window.location.href = "/";
+      return null;
+    }
   const [formData, setFormData] = useState({
     name: "",
     category: "",

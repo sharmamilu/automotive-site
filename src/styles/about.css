@@ -127,7 +127,7 @@
 @media (max-width: 768px) {
   .about-hero {
     height: 80vh;
-    min-height: 600px;
+    /* min-height: 600px; */
     text-align: center;
   }
 
@@ -812,6 +812,9 @@
 }
 
 @media (max-width: 768px) {
+  .hero-content {
+    margin-top: 40%;
+  }
   .hero-content h1 {
     font-size: 2.5rem;
   }
@@ -833,7 +836,7 @@
   .about-hero {
     padding-top: 20%;
     height: 50vh;
-    min-height: 400px;
+    /* min-height: 400px; */
   }
 
   .hero-content h1 {

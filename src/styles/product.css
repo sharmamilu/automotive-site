@@ -994,7 +994,7 @@
 @media (max-width: 768px) {
   .products-hero {
     height: 40vh;
-    min-height: 300px;
+    /* min-height: 300px; */
   }
 
   .hero-content h1 {
