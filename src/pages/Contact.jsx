@@ -35,7 +35,7 @@ const Contact = () => {
     const encodedMessage = encodeURIComponent(message.trim());
 
     // WhatsApp phone number (include country code, no + sign)
-    const phoneNumber = "8015059351"; // Replace this with your WhatsApp phone number
+    const phoneNumber = "96555920350"; // Replace this with your WhatsApp phone number
 
     // Construct the WhatsApp link
     const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
@@ -72,8 +72,8 @@ const Contact = () => {
                 </div>
                 <div className="info-content">
                   <h3>Email Us</h3>
-                  <p>info@autopartspro.com</p>
-                  <p>support@autopartspro.com</p>
+                  <p>info@bavariaceneter.com</p>
+                  <p>Aftab@bavariacenter.com</p>
                 </div>
               </div>
 
@@ -83,7 +83,7 @@ const Contact = () => {
                 </div>
                 <div className="info-content">
                   <h3>Call Us</h3>
-                  <p>+1 (800) 123-4567</p>
+                  <p>+965559 20350</p>
                   <p>Mon-Fri: 9am-6pm</p>
                 </div>
               </div>
@@ -94,8 +94,8 @@ const Contact = () => {
                 </div>
                 <div className="info-content">
                   <h3>Visit Us</h3>
-                  <p>123 Automotive Way</p>
-                  <p>Detroit, MI 48201</p>
+                  <p></p>
+                  <p>23 Street Oxygen Roundabout Shuwaikh, 13123, Kuwait</p>
                 </div>
               </div>
 
@@ -178,7 +178,7 @@ const Contact = () => {
         <div className="map-container">
           <iframe
             title="AutoPartsPro Location"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.6302034694468!2d77.6055853758568!3d12.931472815755182!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1452d43c05e3%3A0xa28e9225b7ec4ecc!2sKannur%20Food%20Point!5e0!3m2!1sen!2sin!4v1755533695143!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478.607891760888!2d47.943058699999995!3d29.3231755!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fcf9b4213845091%3A0xb034b526e62fe9da!2sBavaria%20Center%20Car%20Workshop%20Aftab!5e0!3m2!1sen!2sin!4v1755844030237!5m2!1sen!2sin"
             width="100%"
             height="450"
             style={{ border: 0 }}

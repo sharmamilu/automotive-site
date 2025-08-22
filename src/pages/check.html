@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Multi Image Upload to ImgBB</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 30px; }
+    .container { display: flex; gap: 40px; }
+    .links { max-width: 400px; }
+    .link-item { margin: 5px 0; word-break: break-all; }
+    .preview img { width: 120px; margin: 5px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Upload Images to ImgBB</h2>
+  
+  <div class="container">
+    <!-- Upload Form -->
+    <form id="uploadForm">
+      <input type="file" id="fileInput" multiple accept="image/*" required><br><br>
+      <button type="submit">Upload</button>
+    </form>
+
+    <!-- Links + Preview -->
+    <div class="links">
+      <h3>Uploaded Links:</h3>
+      <div id="linkList"></div>
+      <h3>Preview:</h3>
+      <div id="preview" class="preview"></div>
+    </div>
+  </div>
+
+  <script>
+    const API_KEY = "de7400e3bd03db30358820721c1d6a52"; // 🔑 replace with your ImgBB API key
+    const uploadForm = document.getElementById("uploadForm");
+    const fileInput = document.getElementById("fileInput");
+    const linkList = document.getElementById("linkList");
+    const preview = document.getElementById("preview");
+
+    uploadForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      linkList.innerHTML = "Uploading...";
+      preview.innerHTML = "";
+
+      const files = fileInput.files;
+      const links = [];
+
+      for (let i = 0; i < files.length; i++) {
+        const formData = new FormData();
+        formData.append("image", files[i]);
+
+        try {
+          const res = await fetch(`https://api.imgbb.com/1/upload?key=${API_KEY}`, {
+            method: "POST",
+            body: formData
+          });
+
+          const data = await res.json();
+          const url = data.data.url;
+
+          links.push(url);
+
+          // Show link
+          const linkItem = document.createElement("div");
+          linkItem.className = "link-item";
+          linkItem.innerHTML = `<a href="${url}" target="_blank">${url}</a>`;
+          linkList.appendChild(linkItem);
+
+          // Show preview
+          const img = document.createElement("img");
+          img.src = url;
+          preview.appendChild(img);
+
+        } catch (error) {
+          console.error("Upload failed:", error);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

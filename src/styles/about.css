@@ -16,7 +16,7 @@
   height: 90vh;
   min-height: 700px;
   background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.9)),
-    url("/public/images/automocion.jpg.webp") center/cover no-repeat;
+    url("/public/images/eighth.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -259,6 +259,7 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  max-height: 600px;
 }
 
 .mission-image img {
@@ -383,6 +384,226 @@
   line-height: 1.6;
 }
 
+/* Gallery Section */
+.gallery-section {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.gallery-section .section-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 60px;
+}
+
+/* Carousel */
+.gallery-carousel {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  /* transform: translateX(-${currentSlide * 100}%); */
+}
+
+.carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100%;
+  max-width: 900px;   /* optional: limit max width */
+  height: 500px;      /* fixed height */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ensures no stretching */
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  padding: 30px 20px 20px;
+  color: white;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  transform: translateY(0);
+}
+
+.gallery-overlay h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.gallery-overlay p {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+/* Carousel Controls */
+.carousel-prev,
+.carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.carousel-prev {
+  left: 20px;
+}
+
+.carousel-next {
+  right: 20px;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+  background: rgba(59, 130, 246, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Carousel Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  background: #3b82f6;
+  transform: scale(1.2);
+}
+
+.dot:hover {
+  background: rgba(59, 130, 246, 0.7);
+}
+@media (max-width: 768px) {
+  .gallery-item {
+    height: 300px; /* reduce height on tablets/mobiles */
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-item {
+    height: 220px; /* even smaller for phones */
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .gallery-carousel {
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 80px 0;
+  }
+  
+  .gallery-section h2 {
+    font-size: 2rem;
+  }
+  
+  .carousel-prev,
+  .carousel-next {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  .gallery-overlay {
+    padding: 20px 15px 15px;
+  }
+  
+  .gallery-overlay h4 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-section {
+    padding: 60px 0;
+  }
+  
+  .gallery-section h2 {
+    font-size: 1.8rem;
+  }
+  
+  .carousel-prev,
+  .carousel-next {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  .carousel-prev {
+    left: 10px;
+  }
+  
+  .carousel-next {
+    right: 10px;
+  }
+  
+  .gallery-item {
+    margin: 0 5px;
+  }
+}
 /* Team Section */
 .team-section {
   padding: 100px 0;

@@ -793,12 +793,35 @@ const Products = () => {
               </div> */}
             </div>
 
-            <div className="support-image">
+            {/* <div className="support-image">
               <img
                 src="/images/technical-team.jpg"
                 alt="Technical Support Team"
                 loading="lazy"
               />
+            </div> */}
+            <div className="support-video">
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="support-video-player"
+                poster="/images/technical-video-poster.jpg"
+              >
+                <source src="/videos/product.mp4" type="video/mp4" />
+                <source
+                  src="/videos/technical-support.webm"
+                  type="video/webm"
+                />
+                Your browser does not support the video tag.
+              </video>
+              {/* <div className="video-play-button">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="10" fill="rgba(255,255,255,0.2)" />
+      <path d="M10 8L16 12L10 16V8Z" fill="white" />
+    </svg>
+  </div> */}
             </div>
           </div>
         </div>

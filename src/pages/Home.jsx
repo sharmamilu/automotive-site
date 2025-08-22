@@ -67,39 +67,43 @@ const featuredProducts = [
 const partners = [
   {
     id: 1,
-    name: "Bosch Automotive",
-    logo: "/images/mercedes-benz.png",
-    description: "Global supplier of automotive components and technology",
+    name: "BMW",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/BMW.svg",
+    description: "Precision engineering and performance",
     details:
-      "Official partner since 2015. Provides OEM-quality parts including fuel systems, electrical components, and diagnostic equipment.",
-    website: "https://www.bosch.com",
+      "We provide OEM-quality parts and advanced service solutions for all BMW models, ensuring optimal performance and longevity.",
   },
   {
     id: 2,
-    name: "NGK Spark Plugs",
-    logo: "/images/mercedes-benz.png",
-    description: "World leader in spark plug technology",
+    name: "Mercedes-Benz",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/9/90/Mercedes-Logo.svg",
+    description: "Luxury meets innovation",
     details:
-      "Exclusive spark plug supplier. Their NTK oxygen sensors are factory-installed in most European vehicles.",
-    website: "https://www.ngk.com",
+      "From engine components to electronic systems, we offer high-grade replacements and upgrades tailored for Mercedes-Benz vehicles.",
   },
   {
     id: 3,
-    name: "Brembo",
-    logo: "/images/mercedes-benz.png",
-    description: "Premium braking systems manufacturer",
+    name: "Bentley",
+    logo: "https://fabrikbrands.com/wp-content/uploads/Bentley-Logo-1-1155x770.png",
+    description: "Refined performance and craftsmanship",
     details:
-      "Provides high-performance brake components for our racing and street performance lines. Official technical partner.",
-    website: "https://www.brembo.com",
+      "Our specialized solutions support the elegance and power of Bentley vehicles, using parts that meet luxury performance standards.",
   },
   {
     id: 4,
-    name: "Mobil 1",
-    logo: "/images/mercedes-benz.png",
-    description: "Synthetic motor oil technology leader",
+    name: "Land Rover",
+    logo: "https://upload.wikimedia.org/wikipedia/en/4/4a/LandRover.svg",
+    description: "Capable and rugged luxury SUVs",
     details:
-      "Recommended lubricants for all our engine components. Joint R&D on extended drain interval formulations.",
-    website: "https://www.mobil.com",
+      "We supply robust parts and solutions for Land Rover models, designed to support both urban and off-road performance.",
+  },
+  {
+    id: 5,
+    name: "Rolls-Royce",
+    logo: "https://images.unsplash.com/photo-1557053965-459050b06844?q=80&w=1185&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    description: "Iconic luxury and prestige",
+    details:
+      "Our parts and services uphold the precision and elegance expected from Rolls-Royce vehicles, ensuring seamless performance.",
   },
 ];
 
@@ -150,7 +154,25 @@ const Home = () => {
   return (
     <div className="home">
       {/* Hero Carousel Section */}
-      <section className="hero" style={{ background: gradient }}>
+      {/* Hero Carousel Section */}
+      <section className="hero">
+        {/* Video Background */}
+        <div className="video-background">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="background-video"
+            poster="/images/video-poster.jpg"
+          >
+            {/* <source src="/videos/intro.mp4" type="video/mp4" /> */}
+            <source src="/videos/intro.mp4" type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
+          <div className="video-overlay"></div>
+        </div>
+
         <div className="hero-content">
           <div
             className={`hero-text ${animate ? "animate-in" : "animate-out"}`}
@@ -230,7 +252,7 @@ const Home = () => {
             </div>
           </div>
           <div className="info-image-box">
-            <img src="/images/frame.jpg" alt="Mercedes Benz" loading="lazy" />
+            <img src="/images/fourth.jpg" alt="Mercedes Benz" loading="lazy" />
             <div className="image-overlay"></div>
           </div>
         </div>
@@ -274,8 +296,11 @@ const Home = () => {
       </section>
       <section className="partners-section">
         <div className="section-header">
-          <h2>Our Trusted Partners</h2>
-          <p>Collaborating with industry leaders to bring you the best</p>
+          <h2>Solutions for Leading Automotive Brands</h2>
+          <p>
+            Providing high-quality parts and services tailored for the world’s
+            top car manufacturers
+          </p>
         </div>
 
         <div className="partners-grid">
@@ -306,15 +331,6 @@ const Home = () => {
                   {isExpanded && (
                     <div className="partner-details">
                       <p>{partner.details}</p>
-                      <a
-                        href={partner.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="partner-link"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Visit Website
-                      </a>
                     </div>
                   )}
                 </div>
@@ -353,7 +369,7 @@ const Home = () => {
             <iframe
               width="100%"
               height="100%"
-              src="../videos/Screen Recording 2025-07-18 134412.mp4"
+              src="../videos/factory.mp4"
               title="AutoPartsPro Company Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

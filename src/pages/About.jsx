@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import "../styles/about.css";
 import {
   FiUsers,
@@ -8,6 +8,8 @@ import {
   FiLinkedin,
   FiTwitter,
   FiMail,
+  FiChevronLeft,
+  FiChevronRight,
 } from "react-icons/fi";
 
 const About = () => {
@@ -48,6 +50,64 @@ const About = () => {
       image: "/images/founder.jpg",
     },
   ];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const galleryItems = [
+    {
+      image: "/images/fifth.jpg",
+      title: "Custom Build",
+      description: "Complete vehicle transformation",
+    },
+    {
+      image: "/images/first.jpg",
+      title: "Professional Installation",
+      description: "Our technicians at work",
+    },
+    {
+      image: "/images/second.jpg",
+      title: "Engine Bay Upgrade",
+      description: "Performance parts installation",
+    },
+    {
+      image: "/images/third.jpg",
+      title: "Suspension Work",
+      description: "Precision alignment",
+    },
+    {
+      image: "/images/fourth.jpg",
+      title: "Brake System Upgrade",
+      description: "High-performance brakes",
+    },
+    {
+      image: "/images/seventh.jpg",
+      title: "Performance Parts",
+      description: "High-performance components",
+    },
+    {
+      image: "/images/eighth.jpg",
+      title: "Quality Control",
+      description: "Rigorous testing process",
+    },
+    {
+      image: "/images/ninth.jpg",
+      title: "Performance Parts",
+      description: "High-performance components",
+    },
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % galleryItems.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide(
+      (prev) => (prev - 1 + galleryItems.length) % galleryItems.length
+    );
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
 
   return (
     <div className="about-page">
@@ -126,14 +186,14 @@ const About = () => {
               </div>
               <div className="value-card">
                 <div className="value-icon commitment"></div>
-                <h3>Commitment to Excellence</h3>   
+                <h3>Commitment to Excellence</h3>
                 <p>Delivering excellence through innovation and commitment.</p>
               </div>
             </div>
           </div>
           <div className="mission-image">
             <img
-              src="/images/garage.webp"
+              src="/images/garage-person.jpg"
               alt="Auto parts quality inspection"
               loading="lazy"
             />
@@ -197,38 +257,49 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="team-section">
+      {/* Gallery Section */}
+      <section className="gallery-section">
         <div className="container">
-          <h2>Meet Our Team</h2>
+          <h2>Our Work Gallery</h2>
           <p className="section-subtitle">
-            The passionate professionals behind AutoPartsPro
+            Showcasing Our Premium Auto Parts in Action and Our Commitment to
+            Quality{" "}
           </p>
-          <div className="team-grid">
-            {team.map((member, index) => (
-              <div key={index} className="team-card">
-                <div className="team-image-container">
-                  <div className="team-image">
-                    <img src={member.image} alt={member.name} loading="lazy" />
-                    <div className="team-overlay">
-                      <div className="social-links">
-                        <a href="#" aria-label={`${member.name} LinkedIn`}>
-                          <FiLinkedin />
-                        </a>
-                        <a href="#" aria-label={`${member.name} Twitter`}>
-                          <FiTwitter />
-                        </a>
-                        <a href="#" aria-label={`${member.name} Email`}>
-                          <FiMail />
-                        </a>
-                      </div>
+
+          <div className="gallery-carousel">
+            <div
+              className="carousel-track"
+              style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+            >
+              {galleryItems.map((item, index) => (
+                <div key={index} className="carousel-slide">
+                  <div className="gallery-item">
+                    <img src={item.image} alt={item.title} loading="lazy" />
+                    <div className="gallery-overlay">
+                      {/* <h4>{item.title}</h4>
+                      <p>{item.description}</p> */}
                     </div>
                   </div>
                 </div>
-                <h3>{member.name}</h3>
-                <p>{member.role}</p>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            <button className="carousel-prev" onClick={prevSlide}>
+              <FiChevronLeft />
+            </button>
+            <button className="carousel-next" onClick={nextSlide}>
+              <FiChevronRight />
+            </button>
+
+            <div className="carousel-dots">
+              {galleryItems.map((_, index) => (
+                <button
+                  key={index}
+                  className={`dot ${index === currentSlide ? "active" : ""}`}
+                  onClick={() => goToSlide(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
