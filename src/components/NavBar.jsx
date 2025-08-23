@@ -33,6 +33,11 @@ const Navbar = () => {
   };
 
   const openLogin = () => {
+    const [isLoggedIn] = [localStorage.getItem("isLoggedIn")];
+    if (isLoggedIn) {
+      navigate("/upload");
+      return;
+    }
     setIsLoginOpen(true);
     document.body.style.overflow = "hidden";
   };
