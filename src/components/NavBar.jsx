@@ -189,6 +189,15 @@ const Navbar = () => {
               Contact
             </Link>
           </li>
+          <li>
+            <Link
+              to="/documents"
+              className={`nav-link ${isActive("/documents") ? "active" : ""}`}
+              onClick={() => setIsOpen(false)}
+            >
+              View Documents  
+            </Link>
+          </li>
           <li className="nav-icons">
             <button
               onClick={openLogin}
