@@ -95,6 +95,21 @@ const About = () => {
     },
   ];
 
+  const goToProducts = () => {
+    window.location.href = "/products";
+  };
+
+  const goToContact = () => { 
+    window.location.href = "/contact";
+  }
+
+  const handleLearnMore = () => {
+    //scroll to the our journey
+    const journeySection = document.getElementById("our-journey");
+    if (journeySection) {
+      journeySection.scrollIntoView({ behavior: "smooth" });
+    }
+  }
   const nextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % galleryItems.length);
   };
@@ -133,7 +148,7 @@ const About = () => {
               Since 2010, we've been committed to delivering premium automotive
               components with unmatched expertise.
             </p>
-            <button className="hero-cta">
+            <button className="hero-cta" onClick={handleLearnMore}>
               Explore Our Story
               <svg
                 width="20"
@@ -216,7 +231,7 @@ const About = () => {
 
       {/* History Section */}
       <section className="history-section">
-        <div className="container">
+        <div className="container" id="our-journey">
           <h2>Our Journey</h2>
           <div className="timeline">
             <div className="timeline-item">
@@ -313,8 +328,8 @@ const About = () => {
             automotive needs.
           </p>
           <div className="cta-buttons">
-            <button className="primary-btn">Browse Products</button>
-            <button className="secondary-btn">Contact Us</button>
+            <button className="primary-btn" onClick={goToProducts}>Browse Products</button>
+            <button className="secondary-btn" onClick={goToContact}>Contact Us</button>
           </div>
         </div>
       </section>

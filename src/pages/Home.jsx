@@ -99,6 +99,9 @@ const Home = () => {
   const [productsList, setProducts] = useState([]);
   const [featuredProducts, setFeaturedProducts] = useState([]);
 
+  const handleLearnMore = () => {
+    window.location.href = "/about";
+  }
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -172,7 +175,7 @@ const Home = () => {
           >
             <h1>{title}</h1>
             <p>{description}</p>
-            <button className="hero-btn">
+            <button className="hero-btn" onClick={handleLearnMore}>
               <span>Learn More</span>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path
