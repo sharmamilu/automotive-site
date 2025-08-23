@@ -120,7 +120,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         {/* Logo with icon */}
-        <div className="logo-container">
+        <div className="logo-container" onClick={() => navigate("/")}>
           <img src="/images/logo.jpeg" alt="Logo" className="logo-icon" />
           <h1 className="logo">
             BAVARIA<span className="logo-highlight">CENTER</span>

@@ -163,7 +163,7 @@ const Home = () => {
             poster="/images/video-poster.jpg"
           >
             {/* <source src="/videos/intro.mp4" type="video/mp4" /> */}
-            <source src="/videos/intro-video.mp4" type="video/webm" />
+            <source src="/videos/intro-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="video-overlay"></div>
