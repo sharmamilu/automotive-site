@@ -128,7 +128,7 @@ const Navbar = () => {
         </div>
 
         {/* Search Bar - Desktop */}
-        <form
+        {/* <form
           onSubmit={(e) => {
             e.preventDefault();
             if (inputValue.trim()) {
@@ -149,7 +149,7 @@ const Navbar = () => {
           <button type="submit" className="search-button">
             <FiSearch className="search-icon-nav" />
           </button>
-        </form>
+        </form> */}
 
         {/* Desktop Links */}
         <ul ref={menuRef} className={`nav-links ${isOpen ? "active" : ""}`}>
@@ -229,7 +229,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Search - Only appears on mobile */}
-      <div className="mobile-search-container">
+      {/* <div className="mobile-search-container">
         <input
           type="text"
           placeholder="Search parts..."
@@ -238,7 +238,7 @@ const Navbar = () => {
         <button className="search-button">
           <FiSearch className="search-icon-nav" />
         </button>
-      </div>
+      </div> */}
 
       {/* Admin Login Popup */}
       {isLoginOpen && (
